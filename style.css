@@ -53,9 +53,9 @@ body{
 .container_buttons button:hover{
     background-color: #ffffff8e;   
 }
-.container_buttons button:active{
+.container_buttons button.active, .container_buttons button:active{
     background-color: #ffffff8e;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .button_clear{
@@ -65,7 +65,7 @@ body{
     clip-path: polygon(
         0% 50%, 20% 0%, 100% 0%, 100% 100%, 20% 100%
     );
-    color: #fff;
+    color: #b33b3b;
     border: none;
     cursor: pointer;
     align-self: flex-end;
@@ -98,18 +98,32 @@ body{
     outline: none;
 }
 
-#clear{
-    color: #851919;
+.clear{
+    color: #b33b3b;
 }
 
-#signal{
-    color: #755219;
+.signal{
+    color: #4d4d4d;
 }
 
-#equal{
-    background-color: #755219;
+#btn_equal{
+    background-color: #5a5a5a;
     color: #fff;
 }
-#equal:hover{
-    background-color: #806336;
+#btn_equal:hover{
+    background-color: #686868;
+}
+
+.modal{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: #b33b3b;
+    color: #fff;
+    border-radius: 50px;
+    padding: 0 3% 0 3%;
+    height: 6%;
+    font-size: 20px;
+    position: absolute;
+    bottom: 14%;
 }

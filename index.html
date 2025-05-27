@@ -10,34 +10,38 @@
 <body>
     <div class="container">
         <div class="container_inputs">
-            <input class="input_number" id="input_number" type="text" autofocus maxlength="15">
-            <input class="input_response" disabled type="text" autofocus>
+            <input class="input_number" id="input_number" type="text" autofocus oninput="maxContent()">
+            <input class="input_response" id="input_response" disabled type="text" autofocus>
         </div>
 
         <button class="button_clear" onclick="clearOne()">X</button>
         <div class="line"></div>
 
         <div class="container_buttons">
-            <button id="clear" onclick="clearAll()">C</button>
-            <button id="signal">(</button>
-            <button id="signal">%</button>
-            <button id="signal">/</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button id="signal">X</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button id="signal">-</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button id="signal">+</button>
-            <button>+/-</button>
-            <button>0</button>
-            <button>.</button>
-            <button id="equal">=</button>
+            <button class="clear" id="btn_C" onclick="clearAll()" onclick="clickButton('C')">C</button>
+            <button class="signal" id="btn_(" onclick="clickButton('(')">(</button>
+            <button class="signal" id="btn_%" onclick="clickButton('%')">%</button>
+            <button class="signal" id="btn_/" onclick="clickButton('/')">/</button>
+            <button id="btn_7" onclick="clickButton(7)">7</button>
+            <button id="btn_8" onclick="clickButton(8)">8</button>
+            <button id="btn_9" onclick="clickButton(9)">9</button>
+            <button class="signal" id="btn_*" onclick="clickButton('*')">*</button>
+            <button id="btn_4" onclick="clickButton(4)">4</button>
+            <button id="btn_5" onclick="clickButton(5)">5</button>
+            <button id="btn_6" onclick="clickButton(6)">6</button>
+            <button id="btn_-" class="signal" onclick="clickButton('-')">-</button>
+            <button id="btn_1" onclick="clickButton(1)">1</button>
+            <button id="btn_2" onclick="clickButton(2)">2</button>
+            <button id="btn_3" onclick="clickButton(3)">3</button>
+            <button id="btn_+" class="signal" onclick="clickButton('+')">+</button>
+            <button id="btn_(-" onclick="clickButton('(-')">+/-</button>
+            <button id="btn_0" onclick="clickButton(0)">0</button>
+            <button id="btn_." onclick="clickButton('.')">.</button>
+            <button class="equal" id="btn_equal" onclick="calculate()">=</button>
+        </div>
+
+        <div class="modal" id="modal_error">
+            <p>Can't enter more than 20 digits</p>
         </div>
     </div>
 </body>
