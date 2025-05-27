@@ -1,0 +1,115 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #dadaa4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 25%;
+    height: 90%;
+    background-color: #0f856f;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.line{
+    width: 80%;
+    height: 0.2%;
+    background-color: #fff;
+}
+
+.container_buttons{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2%;
+    width: 90%;
+    break-inside: auto;
+    position: relative;
+    margin-top: -5%;
+}
+
+.container_buttons button{
+    font-size: 30px;
+    width: 90%;         
+    aspect-ratio: 1 / 1; 
+    border-radius: 50%;  
+    border: none;
+    background-color: #ffffff5d;
+    cursor: pointer;
+    transition: 0.5s;
+    
+}
+.container_buttons button:hover{
+    background-color: #ffffff8e;   
+}
+.container_buttons button:active{
+    background-color: #ffffff8e;
+    font-size: 25px;
+}
+
+.button_clear{
+    background-color: #ffffff56;
+    font-size: 20px;
+    width: 35px;
+    clip-path: polygon(
+        0% 50%, 20% 0%, 100% 0%, 100% 100%, 20% 100%
+    );
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-right: 8%;
+    margin-bottom: -6%;
+}
+
+.container_inputs{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.input_number{
+    text-align: right;
+    font-size: 35px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    left: 0;
+}
+
+.input_response{
+    text-align: right;
+    font-size: 25px;
+    background-color: transparent;
+    color: #ffffffd0;
+    border: none;
+    outline: none;
+}
+
+#clear{
+    color: #851919;
+}
+
+#signal{
+    color: #755219;
+}
+
+#equal{
+    background-color: #755219;
+    color: #fff;
+}
+#equal:hover{
+    background-color: #806336;
+}
