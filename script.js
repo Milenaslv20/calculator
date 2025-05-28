@@ -1,16 +1,25 @@
 const inputNumber = document.getElementById('input_number')
 const inputResponse = document.getElementById('input_response')
 const message = document.getElementById('message')
+const historySelect = document.getElementById('history_select')
+
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+const historyExpression = [""]
+const historyResponse = [""]
+
+ 
 let currentLanguage = 'english';
 let messages = {
     english: {
         maxDigits: "Can't enter more than 15 digits",
-        error: "An error occurred"
+        error: "An error occurred",
+        titleSelect: "History"
     },
     portuguese: {
         maxDigits: "Valor máximo de 15 dígitos",
-        error: "Ocorreu um erro"
+        error: "Ocorreu um erro",
+        titleSelect: "Historico"
     }
 };
 
@@ -39,8 +48,19 @@ function languageSelect(language, id){
         selected.style.padding = '2px';
         selected.style.borderRadius = '50px';
     }
+
+    const historyTitle = document.getElementById('history_title')
+    historyTitle.textContent = messages[currentLanguage].titleSelect
+
     inputNumber.focus()
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+    const titleOption = document.getElementById('history_title');
+    if (titleOption) {
+        titleOption.textContent = messages[currentLanguage].titleSelect;
+    }
+});
 
 function maxContent(){
     const modalError = document.getElementById('modal_error')
@@ -149,32 +169,50 @@ document.addEventListener('keydown', function(event) {
         const btn = document.getElementById('btn_' + value);
 
         if (btn) {
-        btn.classList.add('active');
+            btn.classList.add('active');
 
-        if (key === "Enter" || key === "="){
-            if (inputResponse.value.length > 0){
-                inputNumber.value = inputResponse.value
-                inputResponse.value = ""
-            } else if(inputNumber.value === ""){
-                inputNumber = ""
-            } else {
-                calculate()
+            if (key === "Enter" || key === "="){
+                if (inputNumber.value.trim() !== "") {
+                    calculate();
+
+                } 
             }
-        }
 
-        setTimeout(() => {
-            btn.classList.remove('active');
-        }, 200);
+            setTimeout(() => {
+                btn.classList.remove('active');
+            }, 200);
         }
     }
 });
+
 
 function calculate(){
     try{
         const result = math.evaluate(inputNumber.value)
         inputResponse.value = result
+
+        historyExpression.push(inputNumber.value)
+        historyResponse.push(result)
+
+        for (let i = 1; i < historyExpression.length; i++) {
+            const option = document.createElement('option');
+            option.text = `${i}. ${historyExpression[i]} = ${historyResponse[i]}`;
+            option.value = i;
+            historySelect.add(option);
+        }
     } catch (e){
         console.log("erro")
         message.textContent = "An error occured"
     }
 }
+
+historySelect.addEventListener('change', () => {
+    const index = historySelect.value;
+    if (index > 0) {
+        inputNumber.value = historyExpression[index];
+        inputResponse.value = historyResponse[index];
+        inputNumber.focus();
+    }
+});
+
+
