@@ -58,6 +58,13 @@ function clickButton(value){
         } else {
             inputNumber.value += "(-";
         }
+    } else if(value === "="){
+        if (inputResponse.value.length > 0){
+            inputNumber.value = inputResponse.value
+            inputResponse.value = ""
+        } else {
+            calculate()
+        }
     } else {
         inputNumber.value += value;
     }
