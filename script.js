@@ -30,6 +30,7 @@ document.addEventListener("keydown", function(event){
 
 function clearOne(){
     inputNumber.value = inputNumber.value.slice(0, -1)
+    //inputResponse.value = ""
     inputNumber.focus()
 }
 
@@ -61,8 +62,10 @@ function clickButton(value){
     }
 
     maxContent()
-    inputNumber.focus()
+    //inputNumber.focus()
 }
+
+let previousInputNumber = "";
 
 document.addEventListener('keydown', function(event) {
   const key = event.key;
@@ -102,8 +105,8 @@ document.addEventListener('keydown', function(event) {
         if (inputResponse.value.length > 0){
             inputNumber.value = inputResponse.value
             inputResponse.value = ""
-        } else{
-         calculate()
+        } else {
+            calculate()
         }
       }
 
