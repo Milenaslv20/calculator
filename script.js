@@ -62,10 +62,16 @@ function clickButton(value){
     }
 
     maxContent()
-    //inputNumber.focus()
+    inputNumber.focus()
 }
 
 let previousInputNumber = "";
+
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+if (isMobile) {
+  inputNumber.setAttribute('readonly', true);
+}
 
 document.addEventListener('keydown', function(event) {
   const key = event.key;
