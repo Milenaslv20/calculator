@@ -7,7 +7,7 @@ inputNumber.addEventListener('input', () => {
 
 function maxContent(){
     const modalError = document.getElementById('modal_error')
-    const maxSize = 20
+    const maxSize = 15
     if (inputNumber.value.length > maxSize) {
         inputNumber.value = inputNumber.value.slice(0, maxSize)
         modalError.style.display = 'flex'
