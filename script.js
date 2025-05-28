@@ -1,6 +1,11 @@
 const inputNumber = document.getElementById('input_number')
 const inputResponse = document.getElementById('input_response')
+const message = document.getElementById('message')
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+if (isMobile) {
+  inputNumber.setAttribute('readonly', true);
+}
 
 inputNumber.addEventListener('input', () => {
     inputNumber.value = inputNumber.value.replace(/[^0-9+\-*/%.() ]/g, '');
@@ -12,6 +17,7 @@ function maxContent(){
     if (inputNumber.value.length > maxSize) {
         inputNumber.value = inputNumber.value.slice(0, maxSize)
         modalError.style.display = 'flex'
+        message.textContent = "Can't enter more than 15 digits"
         setTimeout(() =>{
             modalError.style.display = 'none'
         }, 3000)
@@ -132,10 +138,11 @@ document.addEventListener('keydown', function(event) {
 });
 
 function calculate(){
-    console.log(inputNumber.value)
-    const expression = inputNumber.value
-
-    const result = eval(expression)
-
-    inputResponse.value = result
+    try{
+        const result = math.evaluate(inputNumber.value)
+        inputResponse.value = result
+    } catch (e){
+        console.log("erro")
+        message.textContent = "An error occured"
+    }
 }
