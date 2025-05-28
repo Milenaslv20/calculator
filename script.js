@@ -29,11 +29,6 @@ function clearAll(){
     inputResponse.value = ""
     inputNumber.focus()
 }
-document.addEventListener("keydown", function(event){
-    if (event.key === "C" || event.key === "c"){
-        clearAll()
-    }
-})
 
 function clearOne(){
     inputNumber.value = inputNumber.value.slice(0, -1)
@@ -71,6 +66,8 @@ function clickButton(value){
         } else {
             calculate()
         }
+    } else if(value === "C"){
+        clearAll()
     } else {
         inputNumber.value += value;
     }
@@ -78,9 +75,7 @@ function clickButton(value){
     maxContent()
 
     inputNumber.focus()
-
 }
-
 
 
 document.addEventListener('keydown', function(event) {
@@ -114,6 +109,10 @@ document.addEventListener('keydown', function(event) {
         inputResponse.value = ""
     }
 
+    if(key === "C" || key === "c"){
+        clearAll()
+    }
+
     if (key in keyMap) {
         const value = keyMap[key];
         const btn = document.getElementById('btn_' + value);
@@ -125,6 +124,8 @@ document.addEventListener('keydown', function(event) {
             if (inputResponse.value.length > 0){
                 inputNumber.value = inputResponse.value
                 inputResponse.value = ""
+            } else if(inputNumber.value === ""){
+                inputNumber = ""
             } else {
                 calculate()
             }
