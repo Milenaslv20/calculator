@@ -21,11 +21,7 @@ function maxContent(){
 function clearAll(){
     inputNumber.value = ""
     inputResponse.value = ""
-    if (isMobile) {
-        inputNumber.setAttribute('readonly', true);
-    } else{
-        inputNumber.focus()
-    } 
+    inputNumber.focus()
 }
 document.addEventListener("keydown", function(event){
     if (event.key === "C" || event.key === "c"){
@@ -36,11 +32,7 @@ document.addEventListener("keydown", function(event){
 function clearOne(){
     inputNumber.value = inputNumber.value.slice(0, -1)
     inputResponse.value = ""
-    if (isMobile) {
-        inputNumber.setAttribute('readonly', true);
-    } else{
-        inputNumber.focus()
-    } 
+    inputNumber.focus()
 }
 
 function clickButton(value){
@@ -72,67 +64,64 @@ function clickButton(value){
 
     maxContent()
 
-    if (isMobile) {
-        inputNumber.setAttribute('readonly', true);
-    } else{
-        inputNumber.focus()
-    } 
+    inputNumber.focus()
+
 }
 
-let previousInputNumber = "";
+
 
 document.addEventListener('keydown', function(event) {
   const key = event.key;
 
   const keyMap = {
-    '0': '0',
-    '1': '1',
-    '2': '2',
-    '3': '3',
-    '4': '4',
-    '5': '5',
-    '6': '6',
-    '7': '7',
-    '8': '8',
-    '9': '9',
-    '+': '+',
-    '-': '-',
-    '*': '*',
-    '/': '/',
-    '(': '(',
-    '%': '%',
-    '.': '.',
-    'Enter': 'equal', 
-    '=': 'equal',
-    'c': 'C',
-    'C': 'C'
-  };
+        '0': '0',
+        '1': '1',
+        '2': '2',
+        '3': '3',
+        '4': '4',
+        '5': '5',
+        '6': '6',
+        '7': '7',
+        '8': '8',
+        '9': '9',
+        '+': '+',
+        '-': '-',
+        '*': '*',
+        '/': '/',
+        '(': '(',
+        '%': '%',
+        '.': '.',
+        'Enter': 'equal', 
+        '=': 'equal',
+        'c': 'C',
+        'C': 'C'
+    };
 
     if (key === "Backspace"){
         inputResponse.value = ""
     }
 
-  if (key in keyMap) {
-    const value = keyMap[key];
-    const btn = document.getElementById('btn_' + value);
+    if (key in keyMap) {
+        const value = keyMap[key];
+        const btn = document.getElementById('btn_' + value);
 
-    if (btn) {
-      btn.classList.add('active');
+        if (btn) {
+        btn.classList.add('active');
 
-      if (key === "Enter"){
-        if (inputResponse.value.length > 0){
-            inputNumber.value = inputResponse.value
-            inputResponse.value = ""
-        } else {
-            calculate()
+        if (key === "Enter"){
+            if (inputResponse.value.length > 0){
+                inputNumber.value = inputResponse.value
+                inputResponse.value = ""
+            } else {
+                calculate()
+            }
         }
-      }
 
-      setTimeout(() => {
-        btn.classList.remove('active');
-      }, 200);
+        setTimeout(() => {
+            btn.classList.remove('active');
+        }, 200);
+        }
     }
-  }
 });
 
 function calculate(){
