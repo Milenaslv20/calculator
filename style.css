@@ -130,6 +130,10 @@ body{
 
 
 @media(max-width: 768px){
+    body{
+        height: 95vh;
+    }
+
     .container{
         width: 80%;
         height: 85vh;
