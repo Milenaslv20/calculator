@@ -61,16 +61,36 @@ body{
 .button_clear{
     background-color: #ffffff56;
     font-size: 20px;
-    width: 35px;
+    width: 15%;
     clip-path: polygon(
         0% 50%, 20% 0%, 100% 0%, 100% 100%, 20% 100%
     );
     color: #b33b3b;
     border: none;
     cursor: pointer;
-    align-self: flex-end;
-    margin-right: 8%;
-    margin-bottom: -6%;
+    margin-left: auto;
+}
+
+.funcionalities{
+    display: flex;
+    position: relative;
+    bottom: -3%;
+    width: 80%;
+    height: 6%;
+}
+.funcionalities img{
+    cursor: pointer;
+    width: 10%;
+    height: 80%;
+    margin: 0;
+    margin-right: 3%;
+    padding: 2px;
+    transition: 0.9s;
+}
+.funcionalities img:hover{
+    background-color: #0b6d5b;
+    padding: 2px;
+    border-radius: 50px;
 }
 
 .container_inputs{

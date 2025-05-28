@@ -2,6 +2,18 @@ const inputNumber = document.getElementById('input_number')
 const inputResponse = document.getElementById('input_response')
 const message = document.getElementById('message')
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+let currentLanguage = 'english';
+let messages = {
+    english: {
+        maxDigits: "Can't enter more than 15 digits",
+        error: "An error occurred"
+    },
+    portuguese: {
+        maxDigits: "Valor máximo de 15 dígitos",
+        error: "Ocorreu um erro"
+    }
+};
+
 
 if (isMobile) {
   inputNumber.setAttribute('readonly', true);
@@ -11,13 +23,32 @@ inputNumber.addEventListener('input', () => {
     inputNumber.value = inputNumber.value.replace(/[^0-9+\-*/%.() ]/g, '');
 });
 
+function languageSelect(language, id){
+    currentLanguage = language;
+
+    const allLanguageButtons = document.querySelectorAll('.language-button');
+    allLanguageButtons.forEach(btn => {
+        btn.style.backgroundColor = '';
+        btn.style.padding = '';
+        btn.style.borderRadius = '';
+    });
+
+    if(language === id){
+        const selected = document.getElementById(id);
+        selected.style.backgroundColor = '#0b6d5b';
+        selected.style.padding = '2px';
+        selected.style.borderRadius = '50px';
+    }
+    inputNumber.focus()
+}
+
 function maxContent(){
     const modalError = document.getElementById('modal_error')
     const maxSize = 15
     if (inputNumber.value.length > maxSize) {
         inputNumber.value = inputNumber.value.slice(0, maxSize)
         modalError.style.display = 'flex'
-        message.textContent = "Can't enter more than 15 digits"
+        message.textContent = messages[currentLanguage].maxDigits;
         setTimeout(() =>{
             modalError.style.display = 'none'
         }, 3000)
