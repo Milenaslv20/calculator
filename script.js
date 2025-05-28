@@ -1,5 +1,6 @@
 const inputNumber = document.getElementById('input_number')
 const inputResponse = document.getElementById('input_response')
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 inputNumber.addEventListener('input', () => {
     inputNumber.value = inputNumber.value.replace(/[^0-9+\-*/%.() ]/g, '');
@@ -20,7 +21,11 @@ function maxContent(){
 function clearAll(){
     inputNumber.value = ""
     inputResponse.value = ""
-    inputNumber.focus()
+    if (isMobile) {
+        inputNumber.setAttribute('readonly', true);
+    } else{
+        inputNumber.focus()
+    } 
 }
 document.addEventListener("keydown", function(event){
     if (event.key === "C" || event.key === "c"){
@@ -30,8 +35,12 @@ document.addEventListener("keydown", function(event){
 
 function clearOne(){
     inputNumber.value = inputNumber.value.slice(0, -1)
-    //inputResponse.value = ""
-    inputNumber.focus()
+    inputResponse.value = ""
+    if (isMobile) {
+        inputNumber.setAttribute('readonly', true);
+    } else{
+        inputNumber.focus()
+    } 
 }
 
 function clickButton(value){
@@ -62,14 +71,12 @@ function clickButton(value){
     }
 
     maxContent()
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
         inputNumber.setAttribute('readonly', true);
     } else{
         inputNumber.focus()
-    }
-    
+    } 
 }
 
 let previousInputNumber = "";
@@ -100,6 +107,10 @@ document.addEventListener('keydown', function(event) {
     'c': 'C',
     'C': 'C'
   };
+
+    if (key === "Backspace"){
+        inputResponse.value = ""
+    }
 
   if (key in keyMap) {
     const value = keyMap[key];
