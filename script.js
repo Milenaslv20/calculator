@@ -99,7 +99,12 @@ document.addEventListener('keydown', function(event) {
       btn.classList.add('active');
 
       if (key === "Enter"){
-        calculate()
+        if (inputResponse.value.length > 0){
+            inputNumber.value = inputResponse.value
+            inputResponse.value = ""
+        } else{
+         calculate()
+        }
       }
 
       setTimeout(() => {
