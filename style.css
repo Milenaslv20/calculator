@@ -155,4 +155,11 @@ body{
         height: 85vh;
         margin-top: -15%;
     }
+
+    .funcionalities{
+        height: 4%;
+    }
+    .funcionalities img{
+        height: 100%;
+    }
 }
