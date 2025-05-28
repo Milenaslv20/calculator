@@ -120,7 +120,7 @@ document.addEventListener('keydown', function(event) {
         if (btn) {
         btn.classList.add('active');
 
-        if (key === "Enter"){
+        if (key === "Enter" || key === "="){
             if (inputResponse.value.length > 0){
                 inputNumber.value = inputResponse.value
                 inputResponse.value = ""
